@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mpping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping file, it maps a Java class Sport(ID,Sport) to database table sports(id,sports) -->
+
+<hibernate-mapping>
+
+	
+	<class name="db.Camera" table="camera">
+	
+		<id name="product_id" type="string"/>
+		<property name="min_shutterspeed" column="min_shutterspeed" type="string"/>
+		<property name="max_shutter_speed" column="max_shutter_speed" type="string"/>
+		<property name="ISO" column="ISO" type="string"/>
+		<property name="camera_type" column="camera_type" type="string"/>
+		<property name="manual_focus" column="manual_focus" type="string"/>
+		<property name="live_view" column="live_view" type="string"/>
+		<property name="video_capability" column="video_capability" type="string"/>
+		<property name="manual_exposure" column="manual_exposure" type="string"/>
+		<property name="sensor_type" column="sensor_type" type="string"/>
+		<property name="img_format" column="img_format" type="string"/>
+		<property name="sensor_resolution" column="sensor_resolution" type="string"/>
+		<property name="effective_pixels" column="effective_pixels" type="string"/>
+		</class>
+</hibernate-mapping>

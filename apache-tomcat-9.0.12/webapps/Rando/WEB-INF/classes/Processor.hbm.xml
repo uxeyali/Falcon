@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mpping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping file, it maps a Java class Sport(ID,Sport) to database table sports(id,sports) -->
+
+<hibernate-mapping>
+
+	<class name="db.Processor" table="processor">  <!-- Java class Sport to table sport --> 
+
+	 		
+		<id name="product_id" type="string"/>
+		<property name="processor_brand" column="processor_brand" type="string" />
+		<property name="processor_name" column="processor_name" type="string" />
+		<property name="speed_GHz" column="speed_GHz" type="string" />
+		</class>
+		
+</hibernate-mapping>
