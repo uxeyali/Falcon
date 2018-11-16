@@ -8,7 +8,7 @@
 <session-factory>
 	
 	<!-- Using JDBC and MySQL, the default port is 3306, name of database is devices -->
-	<property name="connection.url">jdbc:mysql://localhost:3306/devices</property>
+	<property name="connection.url">jdbc:mysql://localhost:3306/FalconDB</property>
 	<!-- should be the username and password to MySQL server -->
 	<property name="connection.username">root</property>
 	<property name="connection.password">99999999</property>
@@ -20,11 +20,5 @@
 	<property name="show_sql">true</property>
 <property name="hibernate.connection.autocommit">true</property> 
 	<mapping resource = "User.hbm.xml"/>
-	<mapping resource = "Laptop.hbm.xml"/>
-	<mapping resource = "Product.hbm.xml"/>
-	<mapping resource = "Os.hbm.xml"/>
-	<mapping resource = "Storage.hbm.xml"/>
-	<mapping resource = "Processor.hbm.xml"/>
-	<mapping resource = "Order.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>
