@@ -4,7 +4,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name = "Employee" table = "clientproducts">
+   <class name = "ClientProducts" table = "clientproducts">
       
       <meta attribute = "class-description">
          This class contains the employee detail. 
@@ -14,9 +14,17 @@
          <generator class="native"/>
       </id>
       
-      <property name = "firstName" column = "first_name" type = "string"/>
-      <property name = "lastName" column = "last_name" type = "string"/>
-      <property name = "salary" column = "salary" type = "int"/>
+      <property name = "SourceID" column = "SourceID" type = "string"/>
+      <property name = "ClientID" column = "ClientID" type = "string"/>
+      <property name = "GroupNumber" column = "GroupNumber" type = "string"/>
+      <property name = "EffectiveDate" column = "EffectiveDate" type = "string"/>
+      <property name = "ProductType" column = "ProductType" type = "string"/>
+      <property name = "BillingType" column = "BillingType" type = "string"/>
+      <property name = "PercentageRate" column = "PercentageRate" type = "string"/>
+      <property name = "DollarRate" column = "DollarRate" type = "string"/>
+      <property name = "ProductEffDate" column = "ProductEffDate" type = "string"/>
+      <property name = "ProductTermDate" column = "ProductTermDate" type = "string"/>
+      <property name = "LastModDate" column = "LastModDate" type = "string"/>
       
    </class>
 </hibernate-mapping>
