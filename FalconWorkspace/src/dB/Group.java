@@ -1,6 +1,7 @@
 package dB;
 
 public class Group {
+	//****************************CODE FOR DATABASE****************************
 	String GroupType;
 	String GroupTypeDesc;
 	String LastModDate;
@@ -24,5 +25,7 @@ public class Group {
 	public void setLastModDate(String lastModDate) {
 		LastModDate = lastModDate;
 	}
+	//************************************************************************
+	
 	
 }

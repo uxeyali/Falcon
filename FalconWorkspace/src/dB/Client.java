@@ -1,7 +1,8 @@
 package dB;
 
 public class Client {
-	String sourceID;
+	//****************************CODE FOR DATABASE****************************
+	String SourceID;
 	String ClientID;
 	String CustomerName;
 	String ConsortiumNumber;
@@ -19,10 +20,10 @@ public class Client {
 	
 	//getters and setters
 	public String getSourceID() {
-		return sourceID;
+		return SourceID;
 	}
 	public void setSourceID(String sourceID) {
-		this.sourceID = sourceID;
+		this.SourceID = sourceID;
 	}
 	public String getClientID() {
 		return ClientID;
@@ -108,5 +109,9 @@ public class Client {
 	public void setLastModDate(String lastModDate) {
 		LastModDate = lastModDate;
 	}
-
+	//************************************************************************
+	
+	
+	//***************************code for other things...*********************
+	
 }

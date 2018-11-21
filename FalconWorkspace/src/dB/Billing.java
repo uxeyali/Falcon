@@ -1,6 +1,7 @@
 package dB;
 
 public class Billing {
+	//****************************CODE FOR DATABASE****************************
 	String BillingType;
 	String BillingTypeDesc;
 	String LastModeDate;
@@ -24,5 +25,6 @@ public class Billing {
 	public void setLastModeDate(String lastModeDate) {
 		LastModeDate = lastModeDate;
 	}
+	//************************************************************************
 	
 }

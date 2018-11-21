@@ -1,6 +1,7 @@
 package dB;
 
 public class Product {
+	//****************************CODE FOR DATABASE****************************
 	String ProductType;
 	String ReportType;
 	String ProductTypeDesc;
@@ -31,5 +32,6 @@ public class Product {
 	public void setLastModDate(String lastModDate) {
 		LastModDate = lastModDate;
 	}
+	//************************************************************************
 	
 }
