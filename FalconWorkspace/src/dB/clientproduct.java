@@ -9,7 +9,6 @@ public class clientproduct {
 	String ProductType;
 	String BillingType;
 	String Percent;
-
 	String ProdEffectiveDate;
 	String ProdTerminateDate;
 	

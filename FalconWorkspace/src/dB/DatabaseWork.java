@@ -17,12 +17,39 @@ public Object grabRecord(String groupNumber) {
 		//		+ " clientproduct where "
 			//	+ "groupnumber = '"+groupNumber+"'");
 		@SuppressWarnings("unchecked")
-		 List clientpr = sess.createQuery("Select distinct SourceID FROM clientproduct").list(); 
-		for (@SuppressWarnings("rawtypes")
-		Iterator it = clientpr.iterator(); it.hasNext();) {
-			clientproduct cp = (clientproduct) it.next();
-			System.out.println(cp.SourceID);
+		List<clientproduct> clientpr = sess.createQuery("select SourceID, ClientID, GroupNumber, "
+				+ "ClientEffectiveDate, ProductType, BillingType, Percent, ProdEffectiveDate, "
+				+ " ProdTerminateDate "
+				+ "FROM clientproduct where GroupNumber = " + groupNumber).list(); 
+//		for(clientproduct elm: clientpr) {
+//			System.out.println(elm.ProductType);
+//		}
+		
+		for(Iterator it = clientpr.iterator(); it.hasNext();) {
+			//clientproduct cp = (clientproduct) it.next();
+			clientproduct cp = new clientproduct();
+			Object[] obj = (Object[]) it.next();
+			cp.setSourceID(obj[0].toString());
+			cp.setClientID(obj[1].toString());
+			cp.setGroupNumber(obj[2].toString());
+			cp.setClientEffectiveDate(obj[3].toString());
+			cp.setProductType(obj[4].toString());
+			cp.setBillingType(obj[5].toString());
+			cp.setPercent(obj[6].toString());
+			cp.setProdEffectiveDate(obj[7].toString());
+			try {
+				cp.setProdTerminateDate(obj[8].toString());
+			} catch(NullPointerException e) {
+				cp.setProdTerminateDate(null);
+			}
+			
+			System.out.println(cp.SourceID + " " + cp.ClientID + " " + cp.GroupNumber + " "
+					+ cp.ClientEffectiveDate + " " + cp.ProductType + " " + cp.BillingType + " "
+					+ cp.Percent + " " + cp.ProdEffectiveDate + " " + cp.ProdTerminateDate);
+			
 		}
+//		System.out.println(clientpr);
+//		System.out.println(clientpr.get(6));
 		tx.commit();
 	} catch (Exception e) {
 		e.printStackTrace();
