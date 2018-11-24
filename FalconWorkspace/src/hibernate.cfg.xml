@@ -8,10 +8,10 @@
 <session-factory>
 	
 	<!-- Using JDBC and MySQL, the default port is 3306, name of database is devices -->
-	<property name="connection.url">jdbc:mysql://localhost:3306/FalconDB</property>
+	<property name="connection.url">jdbc:mysql://localhost:3306/FalconDB?autoReconnect=true&amp;useSSL=FALSE</property>
 	<!-- should be the username and password to MySQL server -->
 	<property name="connection.username">root</property>
-	<property name="connection.password">99999999</property>
+<property name="connection.password">EB485TacoTuesday1!</property>
 
 	<!-- Using JDBS to connect to MySQL, JDBC driver needs to to included in the build path of eclipse -->
 	<property name="connection.driver_class"> com.mysql.cj.jdbc.Driver</property>
@@ -19,6 +19,7 @@
 	<property name="current_session_context_class">thread</property>
 	<property name="show_sql">true</property>
 <property name="hibernate.connection.autocommit">true</property> 
-	<mapping resource = "User.hbm.xml"/>
+	<mapping resource = "clientproduct.hbm.xml"/>
+	<mapping class = "dB.clientproduct"/>
 </session-factory>
 </hibernate-configuration>

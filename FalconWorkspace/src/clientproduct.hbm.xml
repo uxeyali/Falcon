@@ -4,27 +4,25 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name = "ClientProducts" table = "clientproduct">
+   <class name = "dB.clientproduct" table = "ClientProduct">
       
       <meta attribute = "class-description">
          This class contains the employee detail. 
       </meta>
       
-      <id name = "id" type = "int" column = "id">
+      <id name = "GroupNumber" type = "string" column = "GroupNumber">
          <generator class="native"/>
       </id>
       
       <property name = "SourceID" column = "SourceID" type = "string"/>
       <property name = "ClientID" column = "ClientID" type = "string"/>
-      <property name = "GroupNumber" column = "GroupNumber" type = "string"/>
-      <property name = "EffectiveDate" column = "EffectiveDate" type = "string"/>
+      <property name = "ClientEffectiveDate" column = "CLientEffectiveDate" type = "string"/>
       <property name = "ProductType" column = "ProductType" type = "string"/>
       <property name = "BillingType" column = "BillingType" type = "string"/>
-      <property name = "PercentageRate" column = "PercentageRate" type = "string"/>
-      <property name = "DollarRate" column = "DollarRate" type = "string"/>
-      <property name = "ProductEffDate" column = "ProductEffDate" type = "string"/>
-      <property name = "ProductTermDate" column = "ProductTermDate" type = "string"/>
-      <property name = "LastModDate" column = "LastModDate" type = "string"/>
+      <property name = "Percent" column = "Percent" type = "string"/>
+      <property name = "ProdEffectiveDate" column = "ProdEffectiveDate" type = "string"/>
+      <property name = "ProdTerminateDate" column = "ProdTerminateDate" type = "string"/>
+     
       
    </class>
 </hibernate-mapping>
