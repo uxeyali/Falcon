@@ -154,7 +154,6 @@ Session sess = SF.getCurrentSession();
 
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();
-		Wk.grabClient("10191200");
 	}
 }
 
