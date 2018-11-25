@@ -56,6 +56,33 @@ Session sess = SF.getCurrentSession();
 			sess.close();
 		}
 	}
+	public void grabClient(String groupNumber) {
+		Transaction tx = null;
+		
+		try {
+			tx = sess.beginTransaction();
+			 List clients = sess.createQuery("FROM ClientList").list(); 
+	         for (Iterator iterator = clients.iterator(); iterator.hasNext();){
+	            ClientList client = (ClientList) iterator.next(); 
+	            System.out.print(client.getBillingType()); 
+	            System.out.print(client.getClientCategory()); 
+	            System.out.print( client.getEffectiveDate()); 
+	            System.out.print(client.getClientID());
+	            System.out.print(client.getClientSubCategory());
+	            System.out.print(client.getTerminationDate());
+	            System.out.print(client.getComments());
+	            System.out.print(client.getConsortiumName());
+	            System.out.print(client.getConsortiumNumber());
+	            System.out.print(client.getCustomerName());
+	            System.out.println(client.getGroupNumber());
+	            
+	         }
+	         tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+		}
+	}
 	
 	public Object grabRecord(String groupNumber) {
 		Transaction tx = null;
@@ -117,7 +144,7 @@ Session sess = SF.getCurrentSession();
 
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();
-		Wk.search("17847");
+		Wk.grabClient("10333779");
 	}
 }
 
