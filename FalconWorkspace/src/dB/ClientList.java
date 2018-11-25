@@ -14,8 +14,8 @@ public class ClientList {
 	String ClientSubCategory;
 	String Comments;
 	String BillingType;
-	String ClientEffectiveDate;
-	String ClientTerminateDate;
+	String EffectiveDate;
+	String TerminationDate;
 	
 	
 	//getters and setters
@@ -85,11 +85,11 @@ public class ClientList {
 	public void setComments(String Comments) {
 		this.Comments = Comments;
 	}
-	public String getClientEffectiveDate() {
-		return ClientEffectiveDate;
+	public String getEffectiveDate() {
+		return EffectiveDate;
 	}
-	public void setClientEffectiveDate(String effectiveDate) {
-		ClientEffectiveDate = effectiveDate;
+	public void setEffectiveDate(String effectiveDate) {
+		EffectiveDate = effectiveDate;
 	}
 	public String getBillingType() {
 		return BillingType;
@@ -97,10 +97,10 @@ public class ClientList {
 	public void setBillingType(String billingType) {
 		BillingType = billingType;
 	}
-	public String getClientTerminateDate() {
-		return ClientTerminateDate;
+	public String getTerminationDate() {
+		return TerminationDate;
 	}
-	public void setProdTerminateDate(String productTermDate) {
-		this.ClientTerminateDate= productTermDate;
+	public void setTerminationDate(String TermDate) {
+		this.TerminationDate= TermDate;
 	}
 }

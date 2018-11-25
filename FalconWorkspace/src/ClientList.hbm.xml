@@ -20,9 +20,12 @@
       <property name = "ConsortiumNumber" column = "ConsortiumNumber" type = "string"/>
       <property name = "ConsortiumName" column = "ConsortiumName" type = "string"/>
       <property name = "GroupNumberSix" column = "GroupNumberSix" type = "string"/>
-      <property name = "ClientEffectiveDate" column = "CLientEffectiveDate" type = "string"/>
+      <property name = "GroupType" column = "GroupType" type = "string"/>
+      <property name = "ClientCategory" column = "ClientCategory" type = "string"/>
+      <property name = "ClientSubCategory" column = "ClientSubCategory" type = "string"/>
+      <property name = "EffectiveDate" column = "EffectiveDate" type = "string"/>
       <property name = "BillingType" column = "BillingType" type = "string"/>
-      <property name = "ClientTerminateDate" column = "ClientTerminateDate" type = "string"/>
+      <property name = "TerminationDate" column = "TerminationDate" type = "string"/>
      
       
    </class>
