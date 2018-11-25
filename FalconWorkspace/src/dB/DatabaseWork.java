@@ -102,6 +102,18 @@ Session sess = SF.getCurrentSession();
 		}
 		return groupNumber;
 	}
+	public void changeBilling (String groupnumber, String productType) {
+		Transaction tx = null;
+		try {
+			tx = sess.beginTransaction();
+			sess.createQuery("update clientproduct  set BillingType = 0 where groupnumber = '"+groupnumber+"' "
+					+ "& productType = '"+productType+"'");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+		}
+	}
 
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();

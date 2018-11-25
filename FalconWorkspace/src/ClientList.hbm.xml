@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "dB.ClientList" table = "ClientList">
+      
+      <meta attribute = "class-description">
+         This class contains the employee detail. 
+      </meta>
+      
+      <id name = "GroupNumber" type = "string" column = "GroupNumber">
+         <generator class="native"/>
+      </id>
+      
+      <property name = "SourceID" column = "SourceID" type = "string"/>
+      <property name = "ClientID" column = "ClientID" type = "string"/>
+      <property name = "CustomerName" column = "CustomerName" type = "string"/>
+      <property name = "ConsortiumNumber" column = "ConsortiumNumber" type = "string"/>
+      <property name = "ConsortiumName" column = "ConsortiumName" type = "string"/>
+      <property name = "GroupNumberSix" column = "GroupNumberSix" type = "string"/>
+      <property name = "ClientEffectiveDate" column = "CLientEffectiveDate" type = "string"/>
+      <property name = "BillingType" column = "BillingType" type = "string"/>
+      <property name = "ClientTerminateDate" column = "ClientTerminateDate" type = "string"/>
+     
+      
+   </class>
+</hibernate-mapping>
