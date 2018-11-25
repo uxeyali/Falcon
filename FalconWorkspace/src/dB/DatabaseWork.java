@@ -25,7 +25,7 @@ Session sess = SF.getCurrentSession();
 					+ " ProdTerminateDate "
 					+ "FROM clientproduct WHERE SourceID LIKE '%"+ searchString +"%' OR ClientID LIKE '%"+ searchString
 					+"%' OR GroupNumber LIKE '%"+ searchString + "%' group by GroupNumber").list();
-			
+
 			for(Iterator it = clientpr.iterator(); it.hasNext();) {
 				clientproduct cp = new clientproduct();
 				Object[] obj = (Object[]) it.next();
@@ -42,11 +42,11 @@ Session sess = SF.getCurrentSession();
 				} catch(NullPointerException e) {
 					cp.setProdTerminateDate(null);
 				}
-				
+
 				System.out.println(cp.SourceID + " " + cp.ClientID + " " + cp.GroupNumber + " "
 						+ cp.ClientEffectiveDate + " " + cp.ProductType + " " + cp.BillingType + " "
 						+ cp.Percent + " " + cp.ProdEffectiveDate + " " + cp.ProdTerminateDate);
-				
+
 			}
 			tx.commit();
 		} catch (Exception e) {
@@ -56,7 +56,34 @@ Session sess = SF.getCurrentSession();
 			sess.close();
 		}
 	}
-	
+	public void grabClient(String groupNumber) {
+		Transaction tx = null;
+
+		try {
+			tx = sess.beginTransaction();
+			 List clients = sess.createQuery("FROM ClientList").list();
+	         for (Iterator iterator = clients.iterator(); iterator.hasNext();){
+	            ClientList client = (ClientList) iterator.next();
+	            System.out.print(client.getBillingType());
+	            System.out.print(client.getClientCategory());
+	            System.out.print( client.getEffectiveDate());
+	            System.out.print(client.getClientID());
+	            System.out.print(client.getClientSubCategory());
+	            System.out.print(client.getTerminationDate());
+	            System.out.print(client.getComments());
+	            System.out.print(client.getConsortiumName());
+	            System.out.print(client.getConsortiumNumber());
+	            System.out.print(client.getCustomerName());
+	            System.out.println(client.getGroupNumber());
+
+	         }
+	         tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+		}
+	}
+
 	public Object grabRecord(String groupNumber) {
 		Transaction tx = null;
 		try {
@@ -69,7 +96,7 @@ Session sess = SF.getCurrentSession();
 					+ "ClientEffectiveDate, ProductType, BillingType, Percent, ProdEffectiveDate, "
 					+ " ProdTerminateDate "
 					+ "FROM clientproduct where GroupNumber = " + groupNumber).list();
-			
+
 			for(Iterator it = clientpr.iterator(); it.hasNext();) {
 				//clientproduct cp = (clientproduct) it.next();
 				clientproduct cp = new clientproduct();
@@ -87,11 +114,11 @@ Session sess = SF.getCurrentSession();
 				} catch(NullPointerException e) {
 					cp.setProdTerminateDate(null);
 				}
-				
+
 				System.out.println(cp.SourceID + " " + cp.ClientID + " " + cp.GroupNumber + " "
 						+ cp.ClientEffectiveDate + " " + cp.ProductType + " " + cp.BillingType + " "
 						+ cp.Percent + " " + cp.ProdEffectiveDate + " " + cp.ProdTerminateDate);
-				
+
 			}
 			tx.commit();
 		} catch (Exception e) {
@@ -102,7 +129,7 @@ Session sess = SF.getCurrentSession();
 		}
 		return groupNumber;
 	}
-	
+
 	public void grabClient(String groupNumber) {
 		Transaction tx = null;
 		try {
@@ -112,23 +139,23 @@ Session sess = SF.getCurrentSession();
 					+ "ConsortiumNumber, ConsortiumName, GroupNumberSix, GroupNumber, GroupType, "
 					+ " ClientCategory, ClientSubCategory,  Comments, BillingType, EffectiveDate, TerminationDate"
 					+ "FROM client where GroupNumber = " + groupNumber).list();
-			
+
 			for(Iterator it = clientpr.iterator(); it.hasNext();) {
 				//clientproduct cp = (clientproduct) it.next();
 				clientproduct cp = new clientproduct();
 				Object[] obj = (Object[]) it.next();
 				cp.setSourceID(obj[0].toString());
-				
+
 				try {
 					cp.setProdTerminateDate(obj[8].toString());
 				} catch(NullPointerException e) {
 					cp.setProdTerminateDate(null);
 				}
-				
+
 				System.out.println(cp.SourceID + " " + cp.ClientID + " " + cp.GroupNumber + " "
 						+ cp.ClientEffectiveDate + " " + cp.ProductType + " " + cp.BillingType + " "
 						+ cp.Percent + " " + cp.ProdEffectiveDate + " " + cp.ProdTerminateDate);
-				
+
 			}
 			tx.commit();
 		} catch (Exception e) {
@@ -138,14 +165,14 @@ Session sess = SF.getCurrentSession();
 			sess.close();
 		}
 	}
-	
+
 	public void changeBilling (String groupnumber, String productType) {
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
 			sess.createQuery("update clientproduct  set BillingType = 0 where groupnumber = '"+groupnumber+"' "
 					+ "& productType = '"+productType+"'");
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
@@ -154,6 +181,6 @@ Session sess = SF.getCurrentSession();
 
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();
+
 	}
 }
-
