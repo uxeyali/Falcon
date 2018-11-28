@@ -196,27 +196,18 @@ iframe {
   background: #fff;  
 }
 
-.wrap-login100 {
-  width: 390px;
-  background: #fff;
-}
 .search{
-    width: 80%;
-    padding-top: 0;
-    margin-top: 0;
-    padding-bottom: -50px;
-    margin-bottom: -100px;
-    margin: auto;
+    width: 75%;
 }
 
 .wrap{
-    display: block;
-    width: 70%;
+    width:80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin: auto;
 }
 .box{
-    display: inline-block;
-    width: 48%;
+    
     height:auto;
     font-family: Nunito;
     font-weight: 500;
@@ -242,6 +233,33 @@ iframe {
 /*    filter:invert(100);*/
 }
 
+.wrap2{
+    width:80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.clientbox{
+    padding: 40px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #e5e5e5;
+    margin:10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0094d9;
+}
+
+.clientbox:hover{
+    transition: background-color 0.5s ease;
+    background-color: #333333;
+  box-shadow: 0 0px 10px 0px rgba(118, 118, 118, 0.2);
+}
+
+.thinner{
+    font-weight: 100;
+    color:#356b84;
+}
 
 /*------------------------------------------------------------------
 [ Form ]*/
@@ -264,7 +282,7 @@ iframe {
 /*------------------------------------------------------------------
 [ Input ]*/
 
-.wrap-input100 {
+.wrap-input100,.wrap-input1001 {
   width: 100%;
   position: relative;
 /*  border-bottom: 2px solid #d9d9d9; */
@@ -289,7 +307,7 @@ border-radius:7px;
 }
 
 .input1001{
-    width:85%;
+    width:90%;
     display: inline-block;
 }
 
