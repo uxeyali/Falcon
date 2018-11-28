@@ -1,5 +1,6 @@
 package dB;
 import java.util.Arrays;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,17 +10,18 @@ public class DatabaseWork {
 SessionFactory SF = new Configuration().configure().buildSessionFactory();
 Session sess = SF.getCurrentSession();
 
+
 ///* Displays only one Group */
 //select * from clientproduct where concat(SourceID, ClientID, GroupNumber) like '%10191290%' group by GroupNumber;
 ///* Displays all group products*/
 //select * from clientproduct where concat(SourceID, ClientID, GroupNumber) like '%10191290%';
 /*
  * This selects by one group
- * 
-	select clientproduct.SourceID, clientproduct.ClientID, client.CustomerName, clientproduct.GroupNumber, 
+ *
+	select clientproduct.SourceID, clientproduct.ClientID, client.CustomerName, clientproduct.GroupNumber,
 	clientproduct.ProductType, clientproduct.BillingType, clientproduct.Percent, clientproduct.ProdEffectiveDate, clientproduct.ProdTerminateDate
 	from clientproduct join client on clientproduct.GroupNumber = client.GroupNumber
-	where clientproduct.GroupNumber like '%Spar%' OR clientproduct.ClientID like '%Spar%' 
+	where clientproduct.GroupNumber like '%Spar%' OR clientproduct.ClientID like '%Spar%'
 	OR clientproduct.sourceID like '%Spar%' OR client.CustomerName LIKE '%Spar%'
 	group by clientproduct.GroupNumber;
  */
@@ -30,16 +32,16 @@ Session sess = SF.getCurrentSession();
 		try {
 			tx = sess.beginTransaction();
 			@SuppressWarnings("unchecked")
-			List clientpr = sess.createQuery("select SourceID, ClientID, CustomerName, ConsortiumNumber, ConsortiumName, GroupNumberSix, GroupNumber, " + 
-					"GroupType, ClientCategory, ClientSubCategory, Comments, BillingType, EffectiveDate, TerminationDate " + 
-					"from ClientList where GroupNumber like '%"+ searchString +"%' OR ClientID like '%"+ searchString +"%' OR sourceID like '%"+ searchString +"%' " + 
+			List clientpr = sess.createQuery("select SourceID, ClientID, CustomerName, ConsortiumNumber, ConsortiumName, GroupNumberSix, GroupNumber, " +
+					"GroupType, ClientCategory, ClientSubCategory, Comments, BillingType, EffectiveDate, TerminationDate " +
+					"from ClientList where GroupNumber like '%"+ searchString +"%' OR ClientID like '%"+ searchString +"%' OR sourceID like '%"+ searchString +"%' " +
 					"OR CustomerName LIKE '%"+ searchString +"%'").list();
 
 			for(Iterator it = clientpr.iterator(); it.hasNext();) {
 				ClientList c = new ClientList();
-				
+
 				Object[] obj = (Object[]) it.next();
-				
+
 				//ideally these all should be in a try/catch
 				c.setSourceID(obj[0].toString());
 				c.setClientID(obj[1].toString());
@@ -76,7 +78,7 @@ Session sess = SF.getCurrentSession();
 				} catch(NullPointerException e) {
 					c.setTerminationDate(null);
 				}
-					
+
 				System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
 						+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
 						+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
@@ -138,7 +140,7 @@ Session sess = SF.getCurrentSession();
 		}
 		return groupNumber;
 	}
-	
+
 	//this grabs all info on the Group from the Client table
 	public void grabClient(String groupNumber) {
 		Transaction tx = null;
@@ -152,7 +154,7 @@ Session sess = SF.getCurrentSession();
 			for(Iterator it = client2.iterator(); it.hasNext();) {
 				ClientList c = new ClientList();
 				Object[] obj = (Object[]) it.next();
-				
+
 				//ideally these all should be in a try/catch
 				c.setSourceID(obj[0].toString());
 				c.setClientID(obj[1].toString());
@@ -189,7 +191,7 @@ Session sess = SF.getCurrentSession();
 				} catch(NullPointerException e) {
 					c.setTerminationDate(null);
 				}
-					
+
 				System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
 						+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
 						+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
@@ -207,19 +209,24 @@ Session sess = SF.getCurrentSession();
 		}
 	}
 
-	public void changeBilling (String groupnumber, String productType) {
-		Transaction tx = null;
+
+	@SuppressWarnings("deprecation")
+	public void changeBillingto (String amount, String groupnumber, String productType) {
+		String sql = "update clientproduct  set BillingType ='"+amount+"'" +
+	" where groupnumber = '"+groupnumber+"' AND productType = '"+productType+"'"; 
+	Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			sess.createQuery("update clientproduct  set BillingType = 0 where groupnumber = '"+groupnumber+"' "
-					+ "& productType = '"+productType+"'");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			e.getMessage();
-		}
+		Query q = sess.createQuery(sql);
+		int result = q.executeUpdate();
+		tx.commit();
+		System.out.println("changed: " + result);
+	}catch(Exception e) {
+		e.getMessage();
+	}
 	}
 	
+
 	//this method is unused
 	public void grabClientTest(String groupNumber) {
 		Transaction tx = null;
@@ -249,6 +256,7 @@ Session sess = SF.getCurrentSession();
 
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();
-		Wk.search("spar");
+		Wk.search("SP");
+		//Wk.changeBillingto("1","10279775", "PREPAYCOT");
 	}
 }
