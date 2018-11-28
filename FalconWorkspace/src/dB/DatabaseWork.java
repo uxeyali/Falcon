@@ -1,4 +1,5 @@
 package dB;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -25,8 +26,9 @@ Session sess = SF.getCurrentSession();
  */
 
 	//this search will let users Search by SourceID, ClientID, or GroupNumber
-	public void search(String searchString) {
+	public List<ClientList> search(String searchString) {
 		Transaction tx = null;
+		List<ClientList> result = new ArrayList<ClientList>();
 		try {
 			tx = sess.beginTransaction();
 			@SuppressWarnings("unchecked")
@@ -76,7 +78,6 @@ Session sess = SF.getCurrentSession();
 				} catch(NullPointerException e) {
 					c.setTerminationDate(null);
 				}
-					
 				System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
 						+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
 						+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
@@ -84,7 +85,8 @@ Session sess = SF.getCurrentSession();
 						+ c.getClientSubCategory() +" "+ c.getComments() +" "
 						+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
 						+ c.getTerminationDate());
-
+				result.add(c);
+				return result;
 			}
 			tx.commit();
 		} catch (Exception e) {
@@ -92,6 +94,7 @@ Session sess = SF.getCurrentSession();
 			e.getMessage();
 		} finally {
 			sess.close();
+			return result;
 		}
 	}
 

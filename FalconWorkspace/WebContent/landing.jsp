@@ -40,7 +40,7 @@
         </div>
 		<div class="container-login100">
 			<div class="search wrap-login100 m-t-0">
-				<form class="login1001-form validate-form" method="" action="<%=request.getContextPath()%>/landing.jsp" id="search">
+				<form class="login1001-form validate-form" method="" action="<%=request.getContextPath()%>/mngclients.jsp" id="search">
                   
                <div class="wrap-input1001 validate-input">
                  
