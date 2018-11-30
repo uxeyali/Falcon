@@ -31,7 +31,17 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+	<%@ page import="java.util.List" %>
+	<%@ page import="dB.DatabaseWork" %>
+	<%@ page import="dB.ClientList" %>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%
+		String searchValue = request.getParameter("search");
+		System.out.println("Sending stuff to database");
+		DatabaseWork db = new DatabaseWork();
+		List<ClientList> list = db.search((searchValue != null ? searchValue : ""));
+		request.setAttribute("list", list);
+	%>
 	<div class="limiter"> 
         <div class="main">
             <img class="logolanding" src="<%=request.getContextPath()%>/images/full-logo.svg">
@@ -39,7 +49,7 @@
         </div>
 		<div class="container-login100">
 			<div class="search wrap-login100 m-t-0">
-				<form class="login1001-form validate-form" method="" action="<%=request.getContextPath()%>//landing.html" id="search">
+				<form class="login1001-form validate-form" method="" action="<%=request.getContextPath()%>/mngclients.jsp" id="search">
                   
                <div class="wrap-input1001 validate-input">
                  
@@ -53,8 +63,10 @@
             </div>
              
             <div class="wrap2 m-t-50">
-                 <button class="clientbox">SOME PERSON SOMEWHERE<br><span class="thinner"> Some extra info</span>
-            </button>
+           <%-- <c:forEach items="${list}" var="object">
+            
+            	<button class="clientbox">${object[0]}<br><span class="thinner"> Some extra info</span></button>
+            </c:forEach> --%>
                 <button class="clientbox">SOME OTHER CLIENT HERE<br><span class="thinner"> Some extra info</span></button>
                 <button class="clientbox">AND ANOTHER ONE HERE<br><span class="thinner"> Some extra info</span>
             </button>

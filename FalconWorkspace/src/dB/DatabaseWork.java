@@ -34,10 +34,20 @@ Session sess = SF.getCurrentSession();
 		try {
 			tx = sess.beginTransaction();
 			@SuppressWarnings("unchecked")
-			List clientpr = sess.createQuery("select SourceID, ClientID, CustomerName, ConsortiumNumber, ConsortiumName, GroupNumberSix, GroupNumber, " +
-					"GroupType, ClientCategory, ClientSubCategory, Comments, BillingType, EffectiveDate, TerminationDate " +
-					"from ClientList where GroupNumber like '%"+ searchString +"%' OR ClientID like '%"+ searchString +"%' OR sourceID like '%"+ searchString +"%' " +
-					"OR CustomerName LIKE '%"+ searchString +"%'").list();
+			List clientpr;
+			if(searchString.matches(".*\\w.*")) // check for anything that is not white space
+			{
+				clientpr = sess.createQuery("select SourceID, ClientID, CustomerName, ConsortiumNumber, ConsortiumName, GroupNumberSix, GroupNumber, " +
+						"GroupType, ClientCategory, ClientSubCategory, Comments, BillingType, EffectiveDate, TerminationDate " +
+						"from ClientList where GroupNumber like '%"+ searchString +"%' OR ClientID like '%"+ searchString +"%' OR sourceID like '%"+ searchString +"%' " +
+						"OR CustomerName LIKE '%"+ searchString +"%'").list();
+			}
+			else
+			{
+				clientpr = sess.createQuery("select SourceID, ClientID, CustomerName, ConsortiumNumber, ConsortiumName, GroupNumberSix, GroupNumber, " +
+						"GroupType, ClientCategory, ClientSubCategory, Comments, BillingType, EffectiveDate, TerminationDate " +
+						"from ClientList").list();
+			}
 
 			for(Iterator it = clientpr.iterator(); it.hasNext();) {
 				ClientList c = new ClientList();
@@ -80,17 +90,17 @@ Session sess = SF.getCurrentSession();
 				} catch(NullPointerException e) {
 					c.setTerminationDate(null);
 				}
-				System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
-						+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
-						+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
-						+ c.getGroupType() +" "+ c.getClientCategory() +" "
-						+ c.getClientSubCategory() +" "+ c.getComments() +" "
-						+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
-						+ c.getTerminationDate());
+//				System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
+//						+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
+//						+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
+//						+ c.getGroupType() +" "+ c.getClientCategory() +" "
+//						+ c.getClientSubCategory() +" "+ c.getComments() +" "
+//						+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
+//						+ c.getTerminationDate());
 				result.add(c);
-				return result;
 			}
 			tx.commit();
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
@@ -259,7 +269,8 @@ Session sess = SF.getCurrentSession();
 
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();
-		Wk.search("SP");
+		List<ClientList> test = Wk.search("");
 		//Wk.changeBillingto("1","10279775", "PREPAYCOT");
+		System.out.println();
 	}
 }
