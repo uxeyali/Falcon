@@ -68,7 +68,6 @@
             	<button class="clientbox"><c:out value="${object.getCustomerName()}"/><br><span class="thinner">
             	Group #: <c:out value="${object.getGroupNumber()}"/> <br>
             	Group #6: <c:out value="${object.getGroupNumberSix()}"/><br>
-            	Active Date: <c:out value="${object.getEffectiveDate()}"/><br>
             	Client ID: <c:out value="${object.getClientID()}"/></span></button>
           	</c:forEach>
                 <!-- <button class="clientbox">SOME OTHER CLIENT HERE<br><span class="thinner"> Some extra info</span></button>
