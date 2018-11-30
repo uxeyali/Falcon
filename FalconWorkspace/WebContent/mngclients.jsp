@@ -65,9 +65,13 @@
             <div class="wrap2 m-t-50">
            	<c:forEach items="${list}" var="object">
             
-            	<button class="clientbox"><c:out value="${object.getCustomerName()}"/><br><span class="thinner"> Some extra info</span></button>
+            	<button class="clientbox"><c:out value="${object.getCustomerName()}"/><br><span class="thinner">
+            	Group #: <c:out value="${object.getGroupNumber()}"/> <br>
+            	Group #6: <c:out value="${object.getGroupNumberSix()}"/><br>
+            	Active Date: <c:out value="${object.getEffectiveDate()}"/><br>
+            	Client ID: <c:out value="${object.getClientID()}"/></span></button>
           	</c:forEach>
-                <button class="clientbox">SOME OTHER CLIENT HERE<br><span class="thinner"> Some extra info</span></button>
+                <!-- <button class="clientbox">SOME OTHER CLIENT HERE<br><span class="thinner"> Some extra info</span></button>
                 <button class="clientbox">AND ANOTHER ONE HERE<br><span class="thinner"> Some extra info</span>
             </button>
                 <button class="clientbox">AND THEN THERE IS THIS ONE<br><span class="thinner"> Some extra info</span>
@@ -81,7 +85,7 @@
                 <button class="clientbox">HERES ANOTHER ONE<br><span class="thinner"> Some extra info</span>
             </button>
                 <button class="clientbox">AND ANOTHER ONE<br><span class="thinner"> Some extra info</span>
-            </button>
+            </button> -->
                 
 				</div>	
 		</div>
