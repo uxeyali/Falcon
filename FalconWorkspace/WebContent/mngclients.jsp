@@ -63,10 +63,10 @@
             </div>
              
             <div class="wrap2 m-t-50">
-           <%-- <c:forEach items="${list}" var="object">
+           	<c:forEach items="${list}" var="object">
             
-            	<button class="clientbox">${object[0]}<br><span class="thinner"> Some extra info</span></button>
-            </c:forEach> --%>
+            	<button class="clientbox"><c:out value="${object.getCustomerName()}"/><br><span class="thinner"> Some extra info</span></button>
+          	</c:forEach>
                 <button class="clientbox">SOME OTHER CLIENT HERE<br><span class="thinner"> Some extra info</span></button>
                 <button class="clientbox">AND ANOTHER ONE HERE<br><span class="thinner"> Some extra info</span>
             </button>
