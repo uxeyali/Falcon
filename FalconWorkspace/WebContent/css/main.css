@@ -104,6 +104,10 @@ ul, li {
     width:100%;
 }
 
+.clientname{
+    width:100%;
+}
+
 ------------------------------------------
 input {
 	outline: none;
@@ -239,6 +243,142 @@ iframe {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+.wrap3{
+    width:80%;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.wrap3 >hr{
+    padding-bottom: 40px;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.nav li{
+    padding: 20px;
+    margin-left: 40px;
+    display: inline-block;
+    
+}
+
+.nav li:hover{
+    transition: background-color 0.5s ease;
+    background-color: #008bcc;
+    transition: color 0.25s ease;
+    color:white;
+}
+
+.nav ul{
+    margin: auto;
+    align-content: center;
+    text-align: center;
+}
+
+.nav{
+    margin-top: 20px;
+    background-color: #f0f0f0;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+    margin-left: 80%;
+}
+
+.switch>input{
+    margin-left: 80%;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #008bcc;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.wrap3 >div >h5{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: inline;
+}
+
+.twocol{
+    width:100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.twocol1{
+    width:100%;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+.twocol h5{
+    display: inline-grid;
+}
+
+.threecol{
+    width:100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .clientbox{
     padding: 40px;
     padding-top: 50px;
@@ -260,6 +400,12 @@ iframe {
     font-weight: 100;
     color:#356b84;
 }
+
+.buttons button{
+    display: inline;
+}
+
+
 
 /*------------------------------------------------------------------
 [ Form ]*/
@@ -410,7 +556,7 @@ border-radius:7px;
   justify-content: center;
 }
 
-.login100-form-btn, .login1001-form-btn {
+.login100-form-btn, .login1001-form-btn, .login1001-form-btn1, .cancel {
   font-family: Nunito;
   font-size: 16px;
   color: #fff;
@@ -440,6 +586,10 @@ border-radius:7px;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
+}
+
+.login1001-form-btn1{
+    width: 20%;
 }
 
 .login1001-form-btn{
@@ -545,4 +695,9 @@ border-radius:7px;
   position: relative;
   padding-left: 16px;
     text-align: center;
+}
+
+.cancel{
+    background-color: #5d5d5d;
+    width:10%;
 }

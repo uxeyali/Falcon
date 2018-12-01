@@ -37,6 +37,17 @@
             <img class="logolanding" src="<%=request.getContextPath()%>/images/full-logo.svg">
             <img class="avatar" src="<%=request.getContextPath()%>/images/avatar-01.jpg" alt="AVATAR">
         </div>
+        
+         <div class="nav">
+        
+            <ul>
+            <li>Home</li>
+            <li>Schedule Follow-up</li>
+            <li>Product Management</li>
+            <li>Notes & Activities</li>
+            </ul>
+        </div>
+        
 		<div class="container-login100">
 			<div class="search wrap-login100 m-t-0">
 				<form class="login1001-form validate-form" method="" action="<%=request.getContextPath()%>//landing.html" id="search">
