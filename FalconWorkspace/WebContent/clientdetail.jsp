@@ -49,12 +49,11 @@
         </div>
         
 		<div class="container-login100">
-			             
+			 
             <div class="wrap3">
                 <br>
                 <h1 class="clientname"> BLUE CROSS BLUE SHIELD MN</h1>
                 <hr>
-                
                 <h2>Client information</h2>
                 <hr>
                 <div class="twocol">
@@ -118,8 +117,11 @@
                     </div>
                 <br>
             <hr>
-            <button class="login1001-form-btn1">Edit Products</button>
+                
+                <form id="edit" method="get" action="productedit.jsp">
+            <button class="login1001-form-btn1" type="submit" form="edit">Edit Products</button>
                 <br><br>
+                    </form>
 				</div>
             
             <br>

@@ -275,7 +275,7 @@ iframe {
     margin: 10px;
 }
 
-.nav li:hover{
+.nav li:hover, .nav a:hover{
     transition: background-color 0.5s ease;
     background-color: #008bcc;
     transition: color 0.25s ease;
