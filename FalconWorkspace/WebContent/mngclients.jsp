@@ -69,6 +69,11 @@
                  
                 <!-- Keep repeating this button  -->
                  <button class="clientbox" name="client" type="submit" value="chicken">SOME PERSON SOMEWHERE<br><span class="thinner"> Some extra info</span></button>
+                
+                 <button class="clientbox" name="client" type="submit" value="chicken">SOME PERSON SOMEWHERE<br><span class="thinner"> Some extra info</span></button>
+                 <button class="clientbox" name="client" type="submit" value="chicken">SOME PERSON SOMEWHERE<br><span class="thinner"> Some extra info</span></button>
+                 <button class="clientbox" name="client" type="submit" value="chicken">SOME PERSON SOMEWHERE<br><span class="thinner"> Some extra info</span></button>
+                 <button class="clientbox" name="client" type="submit" value="chicken">SOME PERSON SOMEWHERE<br><span class="thinner"> Some extra info</span></button>
                 </form>
 				</div>	
 		</div>

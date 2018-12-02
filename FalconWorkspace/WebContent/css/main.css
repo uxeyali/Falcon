@@ -5,7 +5,7 @@
 @font-face {
   font-family: Nunito;
 }
- 
+
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
@@ -239,6 +239,9 @@ iframe {
 
 .wrap2{
     width:80%;
+    margin: auto;
+}
+.wrap2>form{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -257,11 +260,19 @@ iframe {
     font-weight: 700;
 }
 
+
 .nav li{
-    padding: 20px;
-    margin-left: 40px;
     display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 10px;
+}
+
+.nav a{
     
+    font-weight: 200;
+    font-size: 20px; 
+    margin: 10px;
 }
 
 .nav li:hover{
@@ -280,8 +291,6 @@ iframe {
 .nav{
     margin-top: 20px;
     background-color: #f0f0f0;
-    font-weight: 200;
-    font-size: 20px;
 }
 
 /* The switch - the box around the slider */
