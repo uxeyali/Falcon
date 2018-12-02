@@ -76,7 +76,7 @@
             <div class="wrap2 m-t-50">
            	<c:forEach items="${list}" var="object">
             
-            	<button class="clientbox"><c:out value="${object.getCustomerName()}"/><br><span class="thinner">
+            	<button class="clientbox" value="${object.getGroupNumber()}" ><c:out value="${object.getCustomerName()}"/><br><span class="thinner">
             	Group #: <c:out value="${object.getGroupNumber()}"/> <br>
             	Group #6: <c:out value="${object.getGroupNumberSix()}"/><br>
             	Client ID: <c:out value="${object.getClientID()}"/></span></button>
