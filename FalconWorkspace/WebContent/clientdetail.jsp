@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Manage Clients & Products</title>
+	<title>Client Detail</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -38,51 +38,91 @@
             <img class="avatar" src="<%=request.getContextPath()%>/images/avatar-01.jpg" alt="AVATAR">
         </div>
         
-         <div class="nav">
-        
-            <ul>
-            <li>Home</li>
-            <li>Schedule Follow-up</li>
-            <li>Product Management</li>
-            <li>Notes & Activities</li> 
+          <div class="nav">
+        <ul>
+            <li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
+                <li><a href="<%=request.getContextPath()%>/index.jsp">Schedule Follow-up</a></li>
+                <li><a href="<%=request.getContextPath()%>/mngclients.jsp">Client Management</a></li>
+                <li><a href="<%=request.getContextPath()%>/index.jsp">Product Management</a></li>
+                <li><a href="<%=request.getContextPath()%>/index.jsp">Notes & Activities</a></li>
             </ul>
         </div>
         
 		<div class="container-login100">
-			<div class="search wrap-login100 m-t-0">
-				<form class="login1001-form validate-form" method="" action="<%=request.getContextPath()%>//landing.html" id="search">
-                  
-               <div class="wrap-input1001 validate-input">
-                 
-						<input class="input1001" type="text" name="search" data-validate = "Enter username">
-						<span class="focus-input1001" data-placeholder="Search for a Client, Subclient, or Group"></span>
-                   <button form="search" type="submit" class="login1001-form-btn">
-                       <img src="<%=request.getContextPath()%>//images/icons/search.svg">
-						</button>
-					</div>
-                </form>
-            </div>
-             
-            <div class="wrap2 m-t-50">
-                 <button class="clientbox">SOME PERSON SOMEWHERE<br><span class="thinner"> Some extra info</span>
-            </button>
-                <button class="clientbox">SOME OTHER CLIENT HERE<br><span class="thinner"> Some extra info</span></button>
-                <button class="clientbox">AND ANOTHER ONE HERE<br><span class="thinner"> Some extra info</span>
-            </button>
-                <button class="clientbox">AND THEN THERE IS THIS ONE<br><span class="thinner"> Some extra info</span>
-            </button>
-                <button class="clientbox">THIS ONE IS SUPPOSED TO BE A REALLY LONG NAME SO IM JUST FILLING THIS UP<br><span class="thinner"> Some extra info</span>
-            </button>
-                <button class="clientbox">FOR PEOPLE WHO PUT ADDRESSES IN CLIENT NAMES<br><span class="thinner"> Some extra info</span>
-            </button>
-                <button class="clientbox">HERE YOU GO<br><span class="thinner"> Some extra info</span>
-            </button>
-                <button class="clientbox">HERES ANOTHER ONE<br><span class="thinner"> Some extra info</span>
-            </button>
-                <button class="clientbox">AND ANOTHER ONE<br><span class="thinner"> Some extra info</span>
-            </button>
+			             
+            <div class="wrap3">
+                <br>
+                <h1 class="clientname"> BLUE CROSS BLUE SHIELD MN</h1>
+                <hr>
                 
-				</div>	
+                <h2>Client information</h2>
+                <hr>
+                <div class="twocol">
+                <h5 class="bold"> Client ID</h5>
+                 <h5 class="m-l-30"> 207123</h5>
+                    <h5 class="bold"> Consortium Number</h5>
+                    <h5 class="m-l-30"> 435564564</h5>
+                    <h5 class="bold"> Group Number</h5>
+                    <h5 class="m-l-30"> 0PE003</h5>
+                    <h5 class="bold"> Group Type</h5>
+                    <h5 class="m-l-30"> Self Insured</h5>
+                    <h5 class="bold"> Client Category</h5>
+                    <h5 class="m-l-30"> Public Sector</h5>
+                    <h5 class="bold"> Client SubCategory</h5>
+                    <h5 class="m-l-30">PEIP</h5>
+                    <h5 class="bold"> Comments</h5>
+                    <h5 class="m-l-30"> Here is a bunch of comments a person might have about a client. Those need to go here.</h5>
+                    </div>
+                <br>
+                <br>
+                <h2>Package List</h2>
+                
+                <hr>
+                <div class="threecol">
+                <h5 class=""> PREPAYCOT</h5>
+                 <h5 class="m-l-30"> RDMCOT</h5>
+                    <h5 class="m-l-30"> RDMOPT</h5>
+                    <h5 class=""> CRBALOPT</h5>
+                    <h5 class="m-l-30"> COMBI</h5>
+                    <h5 class="m-l-30"> DRG</h5>
+                    <h5 class=""> SSTAY</h5>
+                    <h5 class="m-l-30"> READM</h5>
+                <h5 class="m-l-30"> PREPAYCOT</h5>
+                <h5 class=""> PREPAYCOT</h5>
+                 <h5 class="m-l-30"> RDMCOT</h5>
+                    <h5 class="m-l-30"> RDMOPT</h5>
+                    <h5 class=""> CRBALOPT</h5>
+                    <h5 class="m-l-30"> COMBI</h5>
+                    <h5 class="m-l-30"> DRG</h5>
+                    <h5 class=""> SSTAY</h5>
+                    <h5 class="m-l-30"> READM</h5>
+                <h5 class="m-l-30"> PREPAYCOT</h5>
+                <h5 class=""> PREPAYCOT</h5>
+                 <h5 class="m-l-30"> RDMCOT</h5>
+                    <h5 class="m-l-30"> RDMOPT</h5>
+                    <h5 class=""> CRBALOPT</h5>
+                    <h5 class="m-l-30"> COMBI</h5>
+                    <h5 class="m-l-30"> DRG</h5>
+                    <h5 class=""> SSTAY</h5>
+                    <h5 class="m-l-30"> READM</h5>
+                <h5 class="m-l-30"> PREPAYCOT</h5>
+                <h5 class=""> PREPAYCOT</h5>
+                 <h5 class="m-l-30"> RDMCOT</h5>
+                    <h5 class="m-l-30"> RDMOPT</h5>
+                    <h5 class=""> CRBALOPT</h5>
+                    <h5 class="m-l-30"> COMBI</h5>
+                    <h5 class="m-l-30"> DRG</h5>
+                    <h5 class=""> SSTAY</h5>
+                    <h5 class="m-l-30"> READM</h5>
+                <h5 class="m-l-30"> PREPAYCOT</h5>
+                    </div>
+                <br>
+            <hr>
+            <button class="login1001-form-btn1">Edit Products</button>
+                <br><br>
+				</div>
+            
+            <br>
 		</div>
 	</div>
 	

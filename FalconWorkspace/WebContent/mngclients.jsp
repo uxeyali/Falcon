@@ -87,6 +87,7 @@
 		            	Group #6: <c:out value="${object.getGroupNumberSix()}"/><br>
 		            	Client ID: <c:out value="${object.getClientID()}"/></span></button>
           			</c:forEach>
+
                 </form>
 				</div>	
 		</div>
