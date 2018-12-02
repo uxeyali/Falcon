@@ -44,7 +44,7 @@
             <li>Home</li>
             <li>Schedule Follow-up</li>
             <li>Product Management</li>
-            <li>Notes & Activities</li>
+            <li>Notes & Activities</li> 
             </ul>
         </div>
         
