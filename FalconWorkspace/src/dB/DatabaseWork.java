@@ -90,13 +90,6 @@ Session sess = SF.getCurrentSession();
 				} catch(NullPointerException e) {
 					c.setTerminationDate(null);
 				}
-//				System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
-//						+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
-//						+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
-//						+ c.getGroupType() +" "+ c.getClientCategory() +" "
-//						+ c.getClientSubCategory() +" "+ c.getComments() +" "
-//						+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
-//						+ c.getTerminationDate());
 				result.add(c);
 			}
 			tx.commit();
@@ -111,8 +104,9 @@ Session sess = SF.getCurrentSession();
 	}
 
 	//this grabs all of a group's products
-	public Object grabRecord(String groupNumber) {
+	public List<clientproduct> grabRecord(String groupNumber) {
 		Transaction tx = null;
+		List<clientproduct> result = new ArrayList<clientproduct>();
 		try {
 			tx = sess.beginTransaction();
 			@SuppressWarnings("unchecked")
@@ -142,21 +136,25 @@ Session sess = SF.getCurrentSession();
 				System.out.println(cp.SourceID + " " + cp.ClientID + " " + cp.GroupNumber + " "
 						+ cp.ClientEffectiveDate + " " + cp.ProductType + " " + cp.BillingType + " "
 						+ cp.Percent + " " + cp.ProdEffectiveDate + " " + cp.ProdTerminateDate);
-
+				
+				//adds clientproduct to the return list
+				result.add(cp);
 			}
 			tx.commit();
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
 		} finally {
 			sess.close();
+			return result;
 		}
-		return groupNumber;
 	}
 
 	//this grabs all info on the Group from the Client table
-	public void grabClient(String groupNumber) {
+	public List<ClientList> grabClient(String groupNumber) {
 		Transaction tx = null;
+		List<ClientList> result = new ArrayList<ClientList>();
 		try {
 			tx = sess.beginTransaction();
 			List client2 = sess.createQuery("select SourceID, ClientID, CustomerName, "
@@ -212,13 +210,17 @@ Session sess = SF.getCurrentSession();
 						+ c.getClientSubCategory() +" "+ c.getComments() +" "
 						+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
 						+ c.getTerminationDate());
+				
+				result.add(c);
 			}
 			tx.commit();
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
 		} finally {
 			sess.close();
+			return result;
 		}
 	}
 
@@ -269,8 +271,17 @@ Session sess = SF.getCurrentSession();
 
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();
-		List<ClientList> test = Wk.search("");
+		//List<ClientList> test = Wk.search("sp");
+		Wk.grabClient("10279777");
 		//Wk.changeBillingto("1","10279775", "PREPAYCOT");
-		System.out.println();
+//		for(ClientList c: test) {
+//			System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
+//			+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
+//			+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
+//			+ c.getGroupType() +" "+ c.getClientCategory() +" "
+//			+ c.getClientSubCategory() +" "+ c.getComments() +" "
+//			+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
+//			+ c.getTerminationDate());
+//		}
 	}
 }

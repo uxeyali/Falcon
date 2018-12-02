@@ -30,5 +30,4 @@ OR clientproduct.sourceID like '%Spar%' OR client.CustomerName LIKE '%Spar%'
 group by clientproduct.GroupNumber;
 
 
-
 select * from client natural join clientproduct;
