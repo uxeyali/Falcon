@@ -1,2 +1,2 @@
 /.metadata/
-hibernate.cfg.xml
+**/hibernate.cfg.xml

@@ -40,7 +40,7 @@ Session sess = SF.getCurrentSession();
 				clientpr = sess.createQuery("select SourceID, ClientID, CustomerName, ConsortiumNumber, ConsortiumName, GroupNumberSix, GroupNumber, " +
 						"GroupType, ClientCategory, ClientSubCategory, Comments, BillingType, EffectiveDate, TerminationDate " +
 						"from ClientList where GroupNumber like '%"+ searchString +"%' OR ClientID like '%"+ searchString +"%' OR sourceID like '%"+ searchString +"%' " +
-						"OR CustomerName LIKE '%"+ searchString +"%'").list();
+						"OR CustomerName LIKE '%"+ searchString +"%' OR GroupNumberSix like '%" + searchString + "%'").list();
 			}
 			else
 			{
