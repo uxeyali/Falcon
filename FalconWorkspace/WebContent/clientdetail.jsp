@@ -31,7 +31,26 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+
+	<%@ page import="java.util.List" %>
+	<%@ page import="dB.DatabaseWork" %>
+	<%@ page import="dB.ClientList" %>
+	<%@ page import="dB.clientproduct" %>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%
+		String group = request.getParameter("group"); // is going to be the group number
+		System.out.println(group);
+		System.out.println("Sending stuff to database");
+		DatabaseWork db = new DatabaseWork();
+		ClientList client = db.grabClient(group);
+		List<clientproduct> products = db.grabRecord(group);
+		
+		
+		request.setAttribute("client", client);
+		request.setAttribute("products", products);
+		
+		db.closeSession();
+	%>
 	<div class="limiter"> 
         <div class="main">
             <img class="logolanding" src="<%=request.getContextPath()%>/images/full-logo.svg">
@@ -58,19 +77,19 @@
                 <hr>
                 <div class="twocol">
                 <h5 class="bold"> Client ID</h5>
-                 <h5 class="m-l-30"> 207123</h5>
+                 <h5 class="m-l-30"> ${client.getClientID()}</h5>
                     <h5 class="bold"> Consortium Number</h5>
-                    <h5 class="m-l-30"> 435564564</h5>
+                    <h5 class="m-l-30"> ${client.getConsortiumNumber()}</h5>
                     <h5 class="bold"> Group Number</h5>
-                    <h5 class="m-l-30"> 0PE003</h5>
+                    <h5 class="m-l-30"> ${client.getGroupNumber()}</h5>
                     <h5 class="bold"> Group Type</h5>
-                    <h5 class="m-l-30"> Self Insured</h5>
+                    <h5 class="m-l-30"> ${client.getGroupNumberSix()}</h5>
                     <h5 class="bold"> Client Category</h5>
-                    <h5 class="m-l-30"> Public Sector</h5>
+                    <h5 class="m-l-30"> ${client.getClientCategory()}</h5>
                     <h5 class="bold"> Client SubCategory</h5>
-                    <h5 class="m-l-30">PEIP</h5>
+                    <h5 class="m-l-30">${client.getClientSubCategory()}</h5>
                     <h5 class="bold"> Comments</h5>
-                    <h5 class="m-l-30"> Here is a bunch of comments a person might have about a client. Those need to go here.</h5>
+                    <h5 class="m-l-30"> ${client.getComments()}</h5>
                     </div>
                 <br>
                 <br>
@@ -78,6 +97,11 @@
                 
                 <hr>
                 <div class="threecol">
+                
+                <c:forEach items = "${products}" var="object">
+                	<h5 class=""> ${object.getProductType()} </h5>
+                </c:forEach>
+                <!-- 
                 <h5 class=""> PREPAYCOT</h5>
                  <h5 class="m-l-30"> RDMCOT</h5>
                     <h5 class="m-l-30"> RDMOPT</h5>
@@ -113,7 +137,7 @@
                     <h5 class="m-l-30"> DRG</h5>
                     <h5 class=""> SSTAY</h5>
                     <h5 class="m-l-30"> READM</h5>
-                <h5 class="m-l-30"> PREPAYCOT</h5>
+                <h5 class="m-l-30"> PREPAYCOT</h5> -->
                     </div>
                 <br>
             <hr>

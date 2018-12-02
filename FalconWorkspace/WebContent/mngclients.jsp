@@ -42,6 +42,7 @@
 		DatabaseWork db = new DatabaseWork();
 		List<ClientList> list = db.search((searchValue != null ? searchValue : ""));
 		request.setAttribute("list", list);
+		db.closeSession();
 	%>
 	
 	<div class="limiter"> 
@@ -82,7 +83,7 @@
                 <!-- Keep repeating this button  -->
                 	<c:forEach items="${list}" var="object">
             
-		            	<button class="clientbox" name="client" type="submit" value="${object.getGroupNumber()}" ><c:out value="${object.getCustomerName()}"/><br><span class="thinner">
+		            	<button class="clientbox" name="group" type="submit" value="${object.getGroupNumber()}" ><c:out value="${object.getCustomerName()}"/><br><span class="thinner">
 		            	Group #: <c:out value="${object.getGroupNumber()}"/> <br>
 		            	Group #6: <c:out value="${object.getGroupNumberSix()}"/><br>
 		            	Client ID: <c:out value="${object.getClientID()}"/></span></button>

@@ -27,6 +27,7 @@ Session sess = SF.getCurrentSession();
 	group by clientproduct.GroupNumber;
  */
 
+	
 	//this search will let users Search by SourceID, ClientID, or GroupNumber
 	public List<ClientList> search(String searchString) {
 		Transaction tx = null;
@@ -97,10 +98,12 @@ Session sess = SF.getCurrentSession();
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
-		} finally {
-			sess.close();
-			return result;
 		}
+		return result;
+	}
+	public void closeSession()
+	{
+		sess.close();
 	}
 
 	//this grabs all of a group's products
@@ -145,83 +148,78 @@ Session sess = SF.getCurrentSession();
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
-		} finally {
-			sess.close();
-			return result;
 		}
+		return result;
 	}
 
 	//this grabs all info on the Group from the Client table
-	public List<ClientList> grabClient(String groupNumber) {
+	public ClientList grabClient(String groupNumber) {
 		Transaction tx = null;
-		List<ClientList> result = new ArrayList<ClientList>();
+		ClientList c = null;
 		try {
 			tx = sess.beginTransaction();
 			List client2 = sess.createQuery("select SourceID, ClientID, CustomerName, "
 					+ "ConsortiumNumber, ConsortiumName, GroupNumberSix, GroupNumber, GroupType, "
 					+ "ClientCategory, ClientSubCategory, Comments, BillingType, EffectiveDate, TerminationDate "
-					+ "FROM ClientList WHERE GroupNumber = " + groupNumber).list();
+					+ "FROM ClientList WHERE GroupNumber = '" + groupNumber + "'").list();
+			Iterator it = client2.iterator();
+			
+			c = new ClientList();
+			Object[] obj = (Object[]) it.next();
 
-			for(Iterator it = client2.iterator(); it.hasNext();) {
-				ClientList c = new ClientList();
-				Object[] obj = (Object[]) it.next();
-
-				//ideally these all should be in a try/catch
-				c.setSourceID(obj[0].toString());
-				c.setClientID(obj[1].toString());
-				try {
-					c.setCustomerName(obj[2].toString());
-				}
-				catch(NullPointerException e) {
-					c.setCustomerName(null);
-				}
-				try {
-					c.setConsortiumNumber(obj[3].toString());
-				} catch(NullPointerException e) {
-					c.setConsortiumNumber(null);
-				}
-				try {
-					c.setConsortiumName(obj[4].toString());
-				} catch(NullPointerException e) {
-					c.setConsortiumName(null);
-				}
-				c.setGroupNumberSix(obj[5].toString());
-				c.setGroupNumber(obj[6].toString());
-				c.setGroupType(obj[7].toString());
-				c.setClientCategory(obj[8].toString());
-				c.setClientSubCategory(obj[9].toString());
-				try {
-					c.setComments(obj[10].toString());
-				} catch(NullPointerException e) {
-					c.setComments(null);
-				}
-				c.setBillingType(obj[11].toString());
-				c.setEffectiveDate(obj[12].toString());
-				try {
-					c.setTerminationDate(obj[13].toString());
-				} catch(NullPointerException e) {
-					c.setTerminationDate(null);
-				}
-
-				System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
-						+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
-						+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
-						+ c.getGroupType() +" "+ c.getClientCategory() +" "
-						+ c.getClientSubCategory() +" "+ c.getComments() +" "
-						+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
-						+ c.getTerminationDate());
-				
-				result.add(c);
+			//ideally these all should be in a try/catch
+			c.setSourceID(obj[0].toString());
+			c.setClientID(obj[1].toString());
+			try {
+				c.setCustomerName(obj[2].toString());
 			}
+			catch(NullPointerException e) {
+				c.setCustomerName(null);
+			}
+			try {
+				c.setConsortiumNumber(obj[3].toString());
+			} catch(NullPointerException e) {
+				c.setConsortiumNumber(null);
+			}
+			try {
+				c.setConsortiumName(obj[4].toString());
+			} catch(NullPointerException e) {
+				c.setConsortiumName(null);
+			}
+			c.setGroupNumberSix(obj[5].toString());
+			c.setGroupNumber(obj[6].toString());
+			c.setGroupType(obj[7].toString());
+			c.setClientCategory(obj[8].toString());
+			c.setClientSubCategory(obj[9].toString());
+			try {
+				c.setComments(obj[10].toString());
+			} catch(NullPointerException e) {
+				c.setComments(null);
+			}
+			c.setBillingType(obj[11].toString());
+			c.setEffectiveDate(obj[12].toString());
+			try {
+				c.setTerminationDate(obj[13].toString());
+			} catch(NullPointerException e) {
+				c.setTerminationDate(null);
+			}
+
+			System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
+					+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
+					+ c.getGroupNumberSix() +" "+ c.getGroupNumber() + " "
+					+ c.getGroupType() +" "+ c.getClientCategory() +" "
+					+ c.getClientSubCategory() +" "+ c.getComments() +" "
+					+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
+					+ c.getTerminationDate());
+			
+			
 			tx.commit();
-			return result;
+			return c;
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
-		} finally {
-			sess.close();
-			return result;
 		}
+		return c;
 	}
 
 
@@ -272,7 +270,10 @@ Session sess = SF.getCurrentSession();
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();
 		//List<ClientList> test = Wk.search("sp");
-		Wk.grabClient("10279777");
+		ClientList test = Wk.grabClient("0PE0030ZA");
+		List<clientproduct> record = Wk.grabRecord("0PE0030ZA");
+		//Wk.closeSession();
+		System.out.println();
 		//Wk.changeBillingto("1","10279775", "PREPAYCOT");
 //		for(ClientList c: test) {
 //			System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
