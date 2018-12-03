@@ -118,7 +118,7 @@ Session sess = SF.getCurrentSession();
 					+ "ClientEffectiveDate, ProductType, BillingType, Percent, ProdEffectiveDate, "
 					+ " ProdTerminateDate "
 					+ "FROM clientproduct where GroupNumber = '" + groupNumber + "'").list();
-			
+
 			for(Iterator it = clientpr.iterator(); it.hasNext();) {
 				//clientproduct cp = (clientproduct) it.next();
 				clientproduct cp = new clientproduct();
@@ -140,7 +140,7 @@ Session sess = SF.getCurrentSession();
 				System.out.println(cp.SourceID + " " + cp.ClientID + " " + cp.GroupNumber + " "
 						+ cp.ClientEffectiveDate + " " + cp.ProductType + " " + cp.BillingType + " "
 						+ cp.Percent + " " + cp.ProdEffectiveDate + " " + cp.ProdTerminateDate);
-				
+
 				//adds clientproduct to the return list
 				result.add(cp);
 			}
@@ -168,7 +168,7 @@ Session sess = SF.getCurrentSession();
 					+ "ClientCategory, ClientSubCategory, Comments, BillingType, EffectiveDate, TerminationDate "
 					+ "FROM ClientList WHERE GroupNumber = '" + groupNumber + "'").list();
 			Iterator it = client2.iterator();
-			
+
 			c = new ClientList();
 			Object[] obj = (Object[]) it.next();
 
@@ -216,8 +216,8 @@ Session sess = SF.getCurrentSession();
 					+ c.getClientSubCategory() +" "+ c.getComments() +" "
 					+ c.getBillingType() +" "+ c.getEffectiveDate() +" "
 					+ c.getTerminationDate());
-			
-			
+
+
 			tx.commit();
 			return c;
 		} catch (Exception e) {
@@ -281,8 +281,6 @@ Session sess = SF.getCurrentSession();
 		DatabaseWork Wk = new DatabaseWork();
 		//List<ClientList> test = Wk.search("sp");
 		//ClientList test = Wk.grabClient("0PE0030ZA");
-		//Wk.grabRecord("0PE0030ZA");
-		//Wk.changeBillingto("0", "0PE0030ZA", "WAE");
 		//Wk.closeSession();
 		//Wk.changeBillingto("1","10279775", "PREPAYCOT");
 //		for(ClientList c: test) {
