@@ -27,7 +27,6 @@ Session sess = SF.getCurrentSession();
 	group by clientproduct.GroupNumber;
  */
 
-	
 	//this search will let users Search by SourceID, ClientID, or GroupNumber
 	public List<ClientList> search(String searchString) {
 		Transaction tx = null;
@@ -98,12 +97,10 @@ Session sess = SF.getCurrentSession();
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
+		} finally {
+			sess.close();
 		}
 		return result;
-	}
-	public void closeSession()
-	{
-		sess.close();
 	}
 
 	//this grabs all of a group's products
@@ -112,12 +109,16 @@ Session sess = SF.getCurrentSession();
 		List<clientproduct> result = new ArrayList<clientproduct>();
 		try {
 			tx = sess.beginTransaction();
+			System.out.println("select SourceID, ClientID, GroupNumber, "
+					+ "ClientEffectiveDate, ProductType, BillingType, Percent, ProdEffectiveDate, "
+					+ " ProdTerminateDate "
+					+ "FROM clientproduct where GroupNumber = " + groupNumber);
 			@SuppressWarnings("unchecked")
 			List<clientproduct> clientpr = sess.createQuery("select SourceID, ClientID, GroupNumber, "
 					+ "ClientEffectiveDate, ProductType, BillingType, Percent, ProdEffectiveDate, "
 					+ " ProdTerminateDate "
 					+ "FROM clientproduct where GroupNumber = " + groupNumber).list();
-
+			
 			for(Iterator it = clientpr.iterator(); it.hasNext();) {
 				//clientproduct cp = (clientproduct) it.next();
 				clientproduct cp = new clientproduct();
@@ -148,6 +149,10 @@ Session sess = SF.getCurrentSession();
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
+		}
+		finally
+		{
+			sess.close();
 		}
 		return result;
 	}
@@ -218,6 +223,8 @@ Session sess = SF.getCurrentSession();
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
+		} finally {
+			sess.close();
 		}
 		return c;
 	}
@@ -265,13 +272,16 @@ Session sess = SF.getCurrentSession();
 			e.printStackTrace();
 			e.getMessage();
 		}
+		finally {
+			sess.close();
+		}
 	}
 
 	public static void main(String[] args) {
 		DatabaseWork Wk = new DatabaseWork();
 		//List<ClientList> test = Wk.search("sp");
-		ClientList test = Wk.grabClient("0PE0030ZA");
-		List<clientproduct> record = Wk.grabRecord("0PE0030ZA");
+		//ClientList test = Wk.grabClient("0PE0030ZA");
+		Wk.grabClient("0PE0030ZA");
 		//Wk.closeSession();
 		System.out.println();
 		//Wk.changeBillingto("1","10279775", "PREPAYCOT");

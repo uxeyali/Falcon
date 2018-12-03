@@ -42,7 +42,6 @@
 		DatabaseWork db = new DatabaseWork();
 		List<ClientList> list = db.search((searchValue != null ? searchValue : ""));
 		request.setAttribute("list", list);
-		db.closeSession();
 	%>
 	
 	<div class="limiter"> 

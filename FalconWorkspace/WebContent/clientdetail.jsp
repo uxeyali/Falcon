@@ -43,13 +43,13 @@
 		System.out.println("Sending stuff to database");
 		DatabaseWork db = new DatabaseWork();
 		ClientList client = db.grabClient(group);
+		db = new DatabaseWork();
 		List<clientproduct> products = db.grabRecord(group);
 		
 		
 		request.setAttribute("client", client);
 		request.setAttribute("products", products);
 		
-		db.closeSession();
 	%>
 	<div class="limiter"> 
         <div class="main">
