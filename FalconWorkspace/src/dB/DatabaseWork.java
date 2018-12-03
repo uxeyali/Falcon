@@ -117,7 +117,7 @@ Session sess = SF.getCurrentSession();
 			List<clientproduct> clientpr = sess.createQuery("select SourceID, ClientID, GroupNumber, "
 					+ "ClientEffectiveDate, ProductType, BillingType, Percent, ProdEffectiveDate, "
 					+ " ProdTerminateDate "
-					+ "FROM clientproduct where GroupNumber = " + groupNumber).list();
+					+ "FROM clientproduct where GroupNumber = '" + groupNumber + "'").list();
 			
 			for(Iterator it = clientpr.iterator(); it.hasNext();) {
 				//clientproduct cp = (clientproduct) it.next();
@@ -281,7 +281,7 @@ Session sess = SF.getCurrentSession();
 		DatabaseWork Wk = new DatabaseWork();
 		//List<ClientList> test = Wk.search("sp");
 		//ClientList test = Wk.grabClient("0PE0030ZA");
-		Wk.grabClient("0PE0030ZA");
+		Wk.grabRecord("0PE0030ZA");
 		//Wk.closeSession();
 		System.out.println();
 		//Wk.changeBillingto("1","10279775", "PREPAYCOT");

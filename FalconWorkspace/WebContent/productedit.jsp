@@ -31,7 +31,19 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+	<%@ page import="java.util.List" %>
+	<%@ page import="dB.DatabaseWork" %>
+	<%@ page import="dB.ClientList" %>
+	<%@ page import="dB.clientproduct" %>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%
+		String group = request.getParameter("group"); // is going to be the group number
+		DatabaseWork db = new DatabaseWork();
+		List<clientproduct> products = db.grabRecord(group);
+		
+		request.setAttribute("products", products);
+		
+	%>
 	<div class="limiter"> 
         <div class="main">
             <img class="logolanding" src="<%=request.getContextPath()%>/images/full-logo.svg">
@@ -58,162 +70,30 @@
                 
                 <hr>
                 <div class="twocol1">
+                
+                
+                <c:forEach items = "${products}" var="object">
+                <h5 class=""> ${object.getProductType()} </h5>
+                <label class="switch">
+                  	<input type="checkbox"  >
+                  	<span class="slider round"></span>
+                </label>
+                </c:forEach>
+                
                 <h5 class=""> PREPAYCOT</h5>
                     <!-- Rounded switch -->
                 <label class="switch">
                   <input type="checkbox">
                   <span class="slider round"></span>
                 </label>
-                 <h5 class=""> RDMCOT</h5>
+                <h5 class=""> CRBALOPT</h5>
                     <!-- Rounded switch -->
                 <label class="switch">
                   <input type="checkbox" checked>
                   <span class="slider round"></span>
                 </label>
-                    <h5 class=""> RDMOPT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> CRBALOPT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> COMBI</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox" checked>
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> DRG</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> SSTAY</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> READM</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                <h5 class=""> PREPAYCOT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                <h5 class=""> PREPAYCOT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                 <h5 class=""> RDMCOT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> RDMOPT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> CRBALOPT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox" checked>
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> COMBI</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox" checked>
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> DRG</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox" checked>
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> SSTAY</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> READM</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                <h5 class=""> PREPAYCOT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                <h5 class=""> PREPAYCOT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                 <h5 class=""> RDMCOT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> RDMOPT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> CRBALOPT</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox" checked>
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> COMBI</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> DRG</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox" checked>
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> SSTAY</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                    <h5 class=""> READM</h5>
-                    <!-- Rounded switch -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
+                
+                 
                     </div>
                 <br>
             <hr>

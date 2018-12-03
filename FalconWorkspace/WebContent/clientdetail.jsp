@@ -142,8 +142,8 @@
                 <br>
             <hr>
                 
-                <form id="edit" method="get" action="productedit.jsp">
-            <button class="login1001-form-btn1" type="submit" form="edit">Edit Products</button>
+                <form id="edit" method="get" action="<%=request.getContextPath()%>/productedit.jsp">
+            		<button class="login1001-form-btn1" type="submit" name="group" value="${group}" form="edit">Edit Products</button>
                 <br><br>
                     </form>
 				</div>
