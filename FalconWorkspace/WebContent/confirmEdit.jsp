@@ -31,94 +31,59 @@
 <!--===============================================================================================-->
 </head>
 <body>
+	
 	<%@ page import="java.util.List" %>
 	<%@ page import="dB.DatabaseWork" %>
 	<%@ page import="dB.ClientList" %>
-	<%@ page import="dB.clientproduct" %>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%
-		String group = request.getParameter("group"); // is going to be the group number
-		System.out.println(group);
+		String searchValue = request.getParameter("group");
+		System.out.println("Sending stuff to database");
 		DatabaseWork db = new DatabaseWork();
-		List<clientproduct> products = db.grabRecord(group);
-		System.out.println(products.get(0));
-		request.setAttribute("products", products);
+		List<ClientList> list = db.search((searchValue != null ? searchValue : ""));
+		request.setAttribute("list", list);
 		
 	%>
+	
 	<div class="limiter"> 
         <div class="main">
-            <img class="logolanding" src="<%=request.getContextPath()%>/images/full-logo.svg">
-            <img class="avatar" src="<%=request.getContextPath()%>/images/avatar-01.jpg" alt="AVATAR">
+            <img class="logolanding" src="images/full-logo.svg">
+            <img class="avatar" src="images/avatar-01.jpg" alt="AVATAR">
         </div>
         
-         <div class="nav">
-        
-            <ul>
-            <li>Home</li>
-            <li>Schedule Follow-up</li>
-            <li>Product Management</li>
-            <li>Notes & Activities</li>
+          <div class="nav">
+        <ul>
+            <li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
+                <li><a href="<%=request.getContextPath()%>/index.jsp">Schedule Follow-up</a></li>
+                <li><a href="<%=request.getContextPath()%>/mngclients.jsp">Client Management</a></li>
+                <li><a href="<%=request.getContextPath()%>/index.jsp">Product Management</a></li>
+                <li><a href="<%=request.getContextPath()%>/index.jsp">Notes & Activities</a></li>
             </ul>
         </div>
         
+        <br><br>
 		<div class="container-login100">
-			 <form id="save" method="get" action="<%=request.getContextPath()%>/confirmEdit.jsp">
-			 <div class="wrap3">
-                <br>
-                <h1 class="clientname"> BLUE CROSS BLUE SHIELD MN</h1>
-                <hr>
-                
-                <h2>Package List</h2>
-                
-                <hr>
-                <div class="twocol1">
-                
-                
-                
-                <c:forEach items = "${products}" var="object">
-                <h5 class=""> ${object.getProductType()} </h5>
-                <label class="switch">
-                  	<input type="checkbox" name="${object.getProductType()}" value="on" <c:if test='${object.getBillingType().equals("1")}'>checked</c:if>>
-                  	<span class="slider round"></span>
-                </label>
-                
-                </c:forEach>
-                
-                 
-                    </div>
-                <br>
-            	<hr>
-                <div class="buttons">
-                <button class="cancel">Cancel</button>
-                
-            	<button class="login1001-form-btn1" form="save" name="group" value='${products.get(0).getGroupNumber()}'>Save Changes</button>
-            
-                    </div>
-                <br><br>
-                
-				</div>
-				</form>
-            
-            <br>
-		</div> 
+			
+             <p> Thanks Uzma! </p>
+		</div>
 	</div>
 	
 <!--===============================================================================================-->
-	<script src="<%=request.getContextPath()%>/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="<%=request.getContextPath()%>/vendor/animsition/js/animsition.min.js"></script>
+	<script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="<%=request.getContextPath()%>/vendor/bootstrap/js/popper.js"></script>
-	<script src="<%=request.getContextPath()%>/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="<%=request.getContextPath()%>/vendor/select2/select2.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="<%=request.getContextPath()%>/vendor/daterangepicker/moment.min.js"></script>
-	<script src="<%=request.getContextPath()%>/vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="<%=request.getContextPath()%>/vendor/countdowntime/countdowntime.js"></script>
+	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="<%=request.getContextPath()%>/js/main.js"></script>
+	<script src="js/main.js"></script>
 
 </body>
 </html>

@@ -50,6 +50,7 @@
 		request.setAttribute("client", client);
 		request.setAttribute("products", products);
 		
+		
 	%>
 	<div class="limiter"> 
         <div class="main">
@@ -143,7 +144,7 @@
             <hr>
                 
                 <form id="edit" method="get" action="<%=request.getContextPath()%>/productedit.jsp">
-            		<button class="login1001-form-btn1" type="submit" name="group" value="${group}" form="edit">Edit Products</button>
+            		<button class="login1001-form-btn1" type="submit" name="group" value="${client.getGroupNumber()}" form="edit">Edit Products</button>
                 <br><br>
                     </form>
 				</div>
