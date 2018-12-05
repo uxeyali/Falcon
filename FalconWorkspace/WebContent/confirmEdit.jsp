@@ -49,7 +49,7 @@
 			System.out.println(request.getParameter(product.getProductType()) != null);
 		}
 		db = new DatabaseWork();
-		db.updateClientProduct(group, valuesOn);
+		db.updateClientProduct(group, valuesOn, allProducts);
 		
 		//request.setAttribute("list", list);
 		

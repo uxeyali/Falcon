@@ -237,6 +237,7 @@ Session sess = SF.getCurrentSession();
 				" where groupnumber = '"+groupnumber+"' AND productType = '"+productType+"'";
 			Transaction tx = null;
 			if (!sess.isOpen()) {
+				sess = SF.getCurrentSession();
 				tx = sess.beginTransaction();
 			}
 		try {
@@ -285,20 +286,20 @@ Session sess = SF.getCurrentSession();
 		}
 	}
 	
-	public void updateClientProduct(String groupNumber, List<String> listOfProductsThatAreOn)
+	public void updateClientProduct(String groupNumber, List<String> listOfProductsThatAreOn, List<clientproduct> allProductsInGroup)
 	{
 		
 		//https://www.concretepage.com/hibernate/hibernate-session-save-update-and-saveorupdate-example
 		Transaction tx = null;
 		ClientList c = null;
-		List<clientproduct> allProductsInGroup = new DatabaseWork().grabRecord(groupNumber);
+		//List<clientproduct> allProductsInGroup = new DatabaseWork().grabRecord(groupNumber);
 		try {
 			tx = sess.beginTransaction();
 			
 			for(int k = 0; k < allProductsInGroup.size(); k++)
 			{
 				
-				sess.clear();
+				//sess.clear();
 				boolean isOn = false;
 				for(int i = 0; i < listOfProductsThatAreOn.size(); i++)
 				{
