@@ -153,6 +153,7 @@ Session sess = SF.getCurrentSession();
 		finally
 		{
 			sess.close();
+			
 		}
 		return result;
 	}
@@ -235,10 +236,15 @@ Session sess = SF.getCurrentSession();
 		String sql = "update clientproduct  set BillingType ='"+amount+"'" +
 				" where groupnumber = '"+groupnumber+"' AND productType = '"+productType+"'";
 			Transaction tx = null;
+			if (!sess.isOpen()) {
+				tx = sess.beginTransaction();
+			}
 		try {
-			tx = sess.beginTransaction();
+			System.out.println("In try");
+			//tx = sess.beginTransaction();
 			Query q = sess.createQuery(sql);
 			int result = q.executeUpdate();
+			
 			tx.commit();
 			System.out.println("changed: " + result);
 		}catch(Exception e) {
@@ -281,6 +287,7 @@ Session sess = SF.getCurrentSession();
 	
 	public void updateClientProduct(String groupNumber, List<String> onValues)
 	{
+		
 		//https://www.concretepage.com/hibernate/hibernate-session-save-update-and-saveorupdate-example
 		Transaction tx = null;
 		ClientList c = null;
@@ -290,14 +297,23 @@ Session sess = SF.getCurrentSession();
 			
 			for(clientproduct p : products)
 			{
-				boolean isOn = false;
-				for(String onProduct : onValues) if (onProduct.equals(p.ProductType)) isOn = true;
 				
-				p.setBillingType(isOn?"1":"0");
-				sess.update(p);
+				sess.clear();
+
+				System.out.println("First FOr : " + products);
+				boolean isOn = false;
+				for(String onProduct : onValues)  if (onProduct.equals(p.getProductType())) {isOn = true;
+				
+				//p.setBillingType(isOn?"1":"0");
+				
+				//sess.update(p);
+				
+				
+				}
+			changeBillingto(isOn?"1":"0", groupNumber, p.getProductType());
 			}
 
-			tx.commit();
+			sess.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.getMessage();
@@ -311,7 +327,7 @@ Session sess = SF.getCurrentSession();
 		//List<ClientList> test = Wk.search("sp");
 		//ClientList test = Wk.grabClient("0PE0030ZA");
 		//Wk.closeSession();
-		//Wk.changeBillingto("1","10279775", "PREPAYCOT");
+		//Wk.changeBillingto("0","10279770", "PREPAYCOT");
 //		for(ClientList c: test) {
 //			System.out.println(c.getSourceID() +" "+ c.getClientID() +" "+ c.getCustomerName()
 //			+" "+ c.getConsortiumNumber() +" "+ c.getConsortiumName() + " "
