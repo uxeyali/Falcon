@@ -100,7 +100,7 @@
                 <div class="threecol">
                 
                 <c:forEach items = "${products}" var="object">
-                	<h5 class=""> <c:if test='${object.getBillingType().equals("1")}'>${object.getProductType()}</c:if> </h5>
+                	<c:if test='${object.getBillingType().equals("1")}'><h5 class=""> ${object.getProductType()}</h5></c:if> 
                 </c:forEach>
                 <!-- 
                 <h5 class=""> PREPAYCOT</h5>
