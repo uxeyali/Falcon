@@ -285,32 +285,30 @@ Session sess = SF.getCurrentSession();
 		}
 	}
 	
-	public void updateClientProduct(String groupNumber, List<String> onValues)
+	public void updateClientProduct(String groupNumber, List<String> listOfProductsThatAreOn)
 	{
 		
 		//https://www.concretepage.com/hibernate/hibernate-session-save-update-and-saveorupdate-example
 		Transaction tx = null;
 		ClientList c = null;
-		List<clientproduct> products = new DatabaseWork().grabRecord(groupNumber);
+		List<clientproduct> allProductsInGroup = new DatabaseWork().grabRecord(groupNumber);
 		try {
 			tx = sess.beginTransaction();
 			
-			for(clientproduct p : products)
+			for(int k = 0; k < allProductsInGroup.size(); k++)
 			{
 				
 				sess.clear();
-
-				System.out.println("First FOr : " + products);
 				boolean isOn = false;
-				for(String onProduct : onValues)  if (onProduct.equals(p.getProductType())) {isOn = true;
-				
-				//p.setBillingType(isOn?"1":"0");
-				
-				//sess.update(p);
-				
-				
+				for(int i = 0; i < listOfProductsThatAreOn.size(); i++)
+				{
+					if(allProductsInGroup.get(k).getProductType().equals(listOfProductsThatAreOn.get(i)))
+					{
+						isOn = true;
+					}
 				}
-			changeBillingto(isOn?"1":"0", groupNumber, p.getProductType());
+				
+			changeBillingto(isOn?"1":"0", groupNumber, allProductsInGroup.get(k).getProductType());
 			}
 
 			sess.close();
