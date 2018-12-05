@@ -39,6 +39,7 @@
 	<%
 		String group = request.getParameter("group"); // is going to be the group number
 		System.out.println(group);
+		request.setAttribute("groupNumber", group);
 		DatabaseWork db = new DatabaseWork();
 		List<clientproduct> products = db.grabRecord(group);
 		System.out.println(products.get(0));
@@ -91,7 +92,7 @@
                 <div class="buttons">
                 <button class="cancel">Cancel</button>
                 
-            	<button class="login1001-form-btn1" form="save" name="group" value='${products.get(0).getGroupNumber()}'>Save Changes</button>
+            	<button class="login1001-form-btn1" form="save" name="group" value='${groupNumber}'>Save Changes</button>
             
                     </div>
                 <br><br>

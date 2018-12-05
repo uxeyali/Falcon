@@ -32,16 +32,26 @@
 </head>
 <body>
 	
-	<%@ page import="java.util.List" %>
+	<%@ page import="java.util.*" %>
 	<%@ page import="dB.DatabaseWork" %>
 	<%@ page import="dB.ClientList" %>
+	<%@ page import="dB.clientproduct" %>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%
-		String searchValue = request.getParameter("group");
+		String group = request.getParameter("group");
 		System.out.println("Sending stuff to database");
 		DatabaseWork db = new DatabaseWork();
-		List<ClientList> list = db.search((searchValue != null ? searchValue : ""));
-		request.setAttribute("list", list);
+		List<clientproduct> allProducts = db.grabRecord(group);
+		List<String> valuesOn = new ArrayList<String>();
+		for(clientproduct product : allProducts)
+		{
+			if(request.getParameter(product.getProductType()) != null) valuesOn.add(product.getProductType());
+			System.out.println(request.getParameter(product.getProductType()) != null);
+		}
+		db = new DatabaseWork();
+		db.updateClientProduct(group, valuesOn);
+		
+		//request.setAttribute("list", list);
 		
 	%>
 	

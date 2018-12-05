@@ -243,6 +243,8 @@ Session sess = SF.getCurrentSession();
 			System.out.println("changed: " + result);
 		}catch(Exception e) {
 			e.getMessage();
+		}finally {
+			sess.close();
 		}
 	}
 
@@ -273,6 +275,33 @@ Session sess = SF.getCurrentSession();
 			e.getMessage();
 		}
 		finally {
+			sess.close();
+		}
+	}
+	
+	public void updateClientProduct(String groupNumber, List<String> onValues)
+	{
+		//https://www.concretepage.com/hibernate/hibernate-session-save-update-and-saveorupdate-example
+		Transaction tx = null;
+		ClientList c = null;
+		List<clientproduct> products = new DatabaseWork().grabRecord(groupNumber);
+		try {
+			tx = sess.beginTransaction();
+			
+			for(clientproduct p : products)
+			{
+				boolean isOn = false;
+				for(String onProduct : onValues) if (onProduct.equals(p.ProductType)) isOn = true;
+				
+				p.setBillingType(isOn?"1":"0");
+				sess.update(p);
+			}
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+		} finally {
 			sess.close();
 		}
 	}
